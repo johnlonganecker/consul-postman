@@ -1,0 +1,572 @@
+{
+	"variables": [],
+	"info": {
+		"name": "Consul",
+		"_postman_id": "aa0ada90-4ce3-e32e-605e-328bfc50280d",
+		"description": "REST API for Consul",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "ACL",
+			"description": "",
+			"item": [
+				{
+					"name": "Create ACL Token",
+					"request": {
+						"url": "{{host}}/v1/acl/create",
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"Name\": \"my-app-token\",\n  \"Type\": \"client\",\n  \"Rules\": \"\"\n}"
+						},
+						"description": "A list of all consumers."
+					},
+					"response": []
+				},
+				{
+					"name": "Update ACL Token",
+					"request": {
+						"url": "{{host}}/v1/acl/update",
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"ID\": \"adf4238a-882b-9ddc-4a9d-5b6758e4159e\",\n  \"Name\": \"my-app-token-updated\",\n  \"Type\": \"client\",\n  \"Rules\": \"# New Rules\",\n}"
+						},
+						"description": "A list of all consumers."
+					},
+					"response": []
+				},
+				{
+					"name": "Delete ACL Token",
+					"request": {
+						"url": "{{host}}/v1/acl/delete",
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"ID\": \"adf4238a-882b-9ddc-4a9d-5b6758e4159e\"\n}"
+						},
+						"description": "A list of all consumers."
+					},
+					"response": []
+				},
+				{
+					"name": "Read ACL Token",
+					"request": {
+						"url": {
+							"raw": "{{host}}/v1/acl/info/:uuid",
+							"auth": {},
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"v1",
+								"acl",
+								"info",
+								":uuid"
+							],
+							"variable": [
+								{
+									"value": "",
+									"id": "uuid"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Clone ACL Token",
+					"request": {
+						"url": {
+							"raw": "{{host}}/v1/acl/clone/:uuid",
+							"auth": {},
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"v1",
+								"acl",
+								"clone",
+								":uuid"
+							],
+							"variable": [
+								{
+									"value": "",
+									"id": "uuid"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"description": "A list of all consumers."
+					},
+					"response": []
+				},
+				{
+					"name": "List ACLs",
+					"request": {
+						"url": "{{host}}/v1/acl/list",
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"ID\": \"adf4238a-882b-9ddc-4a9d-5b6758e4159e\"\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Check ACL Replication",
+					"request": {
+						"url": "{{host}}/v1/acl/replication",
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"ID\": \"adf4238a-882b-9ddc-4a9d-5b6758e4159e\"\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Agent",
+			"description": "",
+			"item": [
+				{
+					"name": "List Members",
+					"request": {
+						"url": "{{host}}/v1/agent/members",
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"ID\": \"adf4238a-882b-9ddc-4a9d-5b6758e4159e\"\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Read Configuration",
+					"request": {
+						"url": "{{host}}/v1/agent/self",
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"ID\": \"adf4238a-882b-9ddc-4a9d-5b6758e4159e\"\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Agent Checks",
+			"description": "",
+			"item": [
+				{
+					"name": "List Checks",
+					"request": {
+						"url": "{{host}}/v1/agent/checks",
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"ID\": \"adf4238a-882b-9ddc-4a9d-5b6758e4159e\"\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Register Checks",
+					"request": {
+						"url": "{{host}}/v1/agent/check/register",
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"ID\": \"mem\",\n  \"Name\": \"Memory utilization\",\n  \"Notes\": \"Ensure we don't oversubscribe memory\",\n  \"DeregisterCriticalServiceAfter\": \"90m\",\n  \"Script\": \"/usr/local/bin/check_mem.py\",\n  \"DockerContainerID\": \"f972c95ebf0e\",\n  \"Shell\": \"/bin/bash\",\n  \"HTTP\": \"http://example.com\",\n  \"TCP\": \"example.com:22\",\n  \"Interval\": \"10s\",\n  \"TTL\": \"15s\",\n  \"TLSSkipVerify\": true\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Deregister Checks",
+					"request": {
+						"url": {
+							"raw": "{{host}}/v1/agent/check/deregister/:check_id",
+							"auth": {},
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"v1",
+								"agent",
+								"check",
+								"deregister",
+								":check_id"
+							],
+							"variable": [
+								{
+									"value": "",
+									"id": "check_id"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "TTL Check Pass",
+					"request": {
+						"url": {
+							"raw": "{{host}}/v1/agent/check/pass/:check_id?note=\"\"",
+							"auth": {},
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"v1",
+								"agent",
+								"check",
+								"pass",
+								":check_id"
+							],
+							"query": [
+								{
+									"key": "note",
+									"value": "\"\""
+								}
+							],
+							"variable": [
+								{
+									"value": "",
+									"id": "check_id"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "TTL Check Warn",
+					"request": {
+						"url": {
+							"raw": "{{host}}/v1/agent/check/warn/:check_id?note=\"\"",
+							"auth": {},
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"v1",
+								"agent",
+								"check",
+								"warn",
+								":check_id"
+							],
+							"query": [
+								{
+									"key": "note",
+									"value": "\"\""
+								}
+							],
+							"variable": [
+								{
+									"value": "",
+									"id": "check_id"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "TTL Check Fail",
+					"request": {
+						"url": {
+							"raw": "{{host}}/v1/agent/check/fail/:check_id?note=\"\"",
+							"auth": {},
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"v1",
+								"agent",
+								"check",
+								"fail",
+								":check_id"
+							],
+							"query": [
+								{
+									"key": "note",
+									"value": "\"\""
+								}
+							],
+							"variable": [
+								{
+									"value": "",
+									"id": "check_id"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "TTL Check Update",
+					"request": {
+						"url": {
+							"raw": "{{host}}/v1/agent/check/update/:check_id",
+							"auth": {},
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"v1",
+								"agent",
+								"check",
+								"update",
+								":check_id"
+							],
+							"variable": [
+								{
+									"value": "",
+									"id": "check_id"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"Status\": \"passing\",\n  \"Output\": \"curl reported a failure:\\n\\n...\"\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Agent Services",
+			"description": "",
+			"item": [
+				{
+					"name": "List Services",
+					"request": {
+						"url": "{{host}}/v1/agent/services",
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"ID\": \"adf4238a-882b-9ddc-4a9d-5b6758e4159e\"\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Register Service",
+					"request": {
+						"url": "{{host}}/v1/agent/service/register",
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"ID\": \"redis1\",\n  \"Name\": \"redis\",\n  \"Tags\": [\n    \"primary\",\n    \"v1\"\n  ],\n  \"Address\": \"127.0.0.1\",\n  \"Port\": 8000,\n  \"EnableTagOverride\": false,\n  \"Check\": {\n    \"DeregisterCriticalServiceAfter\": \"90m\",\n    \"Script\": \"/usr/local/bin/check_redis.py\",\n    \"HTTP\": \"http://localhost:5000/health\",\n    \"Interval\": \"10s\",\n    \"TTL\": \"15s\"\n  }\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Deregister Service",
+					"request": {
+						"url": {
+							"raw": "{{host}}/v1/agent/service/deregister/:service_id",
+							"auth": {},
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"v1",
+								"agent",
+								"service",
+								"deregister",
+								":service_id"
+							],
+							"variable": [
+								{
+									"value": "",
+									"id": "service_id"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Enable Maintenance Mode",
+					"request": {
+						"url": {
+							"raw": "{{host}}/v1/agent/service/maintenance/:service_id?enable=true&reason=For+the+docs",
+							"auth": {},
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"v1",
+								"agent",
+								"service",
+								"maintenance",
+								":service_id"
+							],
+							"query": [
+								{
+									"key": "enable",
+									"value": "true"
+								},
+								{
+									"key": "reason",
+									"value": "For+the+docs"
+								}
+							],
+							"variable": [
+								{
+									"value": "",
+									"id": "service_id"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Catalog",
+			"description": "",
+			"item": []
+		},
+		{
+			"name": "Coordinates",
+			"description": "",
+			"item": []
+		},
+		{
+			"name": "Events",
+			"description": "",
+			"item": []
+		},
+		{
+			"name": "Events",
+			"description": "",
+			"item": []
+		},
+		{
+			"name": "Health",
+			"description": "",
+			"item": []
+		},
+		{
+			"name": "KV Store",
+			"description": "",
+			"item": []
+		},
+		{
+			"name": "Operator",
+			"description": "",
+			"item": []
+		},
+		{
+			"name": "Prepared Queries",
+			"description": "",
+			"item": []
+		},
+		{
+			"name": "Sessions",
+			"description": "",
+			"item": []
+		},
+		{
+			"name": "Snapshots",
+			"description": "",
+			"item": []
+		},
+		{
+			"name": "Status",
+			"description": "",
+			"item": []
+		},
+		{
+			"name": "Transactions",
+			"description": "",
+			"item": []
+		}
+	]
+}

@@ -1,0 +1,16 @@
+{
+  "id": "2ae9381d-c45b-700c-704e-5677232f23eb",
+  "name": "Consul localhost",
+  "values": [
+    {
+      "enabled": true,
+      "key": "host",
+      "value": "localhost:8500",
+      "type": "text"
+    }
+  ],
+  "timestamp": 1493906318364,
+  "_postman_variable_scope": "environment",
+  "_postman_exported_at": "2017-05-05T01:44:29.296Z",
+  "_postman_exported_using": "Postman/4.10.7"
+}
